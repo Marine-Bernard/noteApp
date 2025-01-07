@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, Platform, StyleSheet, Text, View } from 'react-native';
 import Header from './components/header';
 import NoteItem from './components/NoteItem';
 import { FlatList, TextInput } from 'react-native-web';
@@ -8,6 +8,8 @@ import AddNote from './components/AddNote';
 
 
 export default function App() {
+  const isMobile = Platform.OS === 'ios' || Platform.OS === 'android';
+
   const [notes, setNotes] = useState([
     { id: '1', content: 'Note1', icon: 'code' },
     { id: '2', content: 'Note2', icon: 'book' },
@@ -16,8 +18,31 @@ export default function App() {
   ]);
 
   const deleteNote = (id) => {
-    setNotes(notes.filter((note) => note.id !== id));
-  };
+    if (isMobile) {
+    Alert.alert(
+      "Confirmer la suppression",
+      "Êtes-vous sûr de vouloir supprimer cette note ?",
+      [
+        {
+          text: "Annuler",
+          style: "cancel"
+        },
+        {
+          text: "Supprimer",
+          onPress: () => {
+            setNotes(notes.filter((note) => note.id !== id));
+          },
+        },
+      ],
+      { cancelable: true } 
+    );
+  }else {
+    const confirmDeletion = window.confirm("Êtes-vous sûr de vouloir supprimer cette note ?");
+    if (confirmDeletion) {
+      setNotes(notes.filter((note) => note.id !== id));
+    }
+  }
+  }
   
   return (
     <View style={styles.container}>
