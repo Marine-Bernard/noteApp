@@ -4,6 +4,7 @@ import Header from './components/header';
 import NoteItem from './components/NoteItem';
 import { FlatList, TextInput } from 'react-native-web';
 import { useState } from 'react';
+import AddNote from './components/AddNote';
 
 
 export default function App() {
@@ -13,11 +14,7 @@ export default function App() {
     { id: '3', content: 'Note3', icon: 'favorite' },
     { id: '4', content: 'Note4', icon: 'code' },
   ]);
-  const [newNote, setNewNote] = useState('');
-
-  const handleAddNote = () => {
-    setNotes([...notes, { id: notes.length + 1, content: newNote, icon: 'code' }]);
-  };
+  
   return (
     <View style={styles.container}>
       <Header title="NotesApp" />
@@ -29,17 +26,13 @@ export default function App() {
           <NoteItem item={item} />
         )}
       />
-      <div style={styles.AddNote}>
-        <TextInput placeholder="Add a note" value={newNote} onChangeText={setNewNote} />
-        <button onClick={handleAddNote}>Add</button>
-      </div>
-      
+      <AddNote notes={notes} setNotes={setNotes} />
       <StatusBar style="auto" />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   AddNote: {
     display: 'flex',
     flexDirection: 'row',
