@@ -6,7 +6,7 @@ const NoteItem = ({ item, fonction }) => {
   return (
     <View style={styles.note}>
         <View style={styles.noteContent}>
-            <MaterialIcons name={item.icon} size={24} color="#00796b" style={styles.icon} />
+            <MaterialIcons name={item.icon} size={24} color="#CE6E8E" style={styles.icon} />
             <Text style={styles.noteText}>{item.content}</Text>
         </View>
         <View style={styles.Supp}>
@@ -27,8 +27,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 20,
         marginVertical: 10,
+        alignItems: 'center',
     },
     noteContent: {
+        height: 50,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         padding: 10,
+        margin: 10,
     },
     Supp: {
         flexDirection: 'row',
@@ -50,7 +53,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        padding: 10,   
+        padding: 10,  
+        height: 50, 
     },
     noteText: {
         fontSize: 20,

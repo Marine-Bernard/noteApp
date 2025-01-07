@@ -62,20 +62,9 @@ export default function App() {
 }
 
 export const styles = StyleSheet.create({
-  AddNote: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    width: '100%',
-    backgroundColor: '#f9f9f9',
-    position: 'absolute',
-    bottom: 0,
-  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F8F7F7',
     alignItems: 'center',
     justifyContent: 'center',
   },

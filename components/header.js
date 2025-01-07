@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     width: '100%',
-    backgroundColor: '#f4511e',    
+    backgroundColor: '#CE6E8E',    
     top: '0' ,       
     justifyContent: 'center', 
     alignItems: 'center',  
