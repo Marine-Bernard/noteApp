@@ -16,7 +16,7 @@ export default function App() {
   const [newNote, setNewNote] = useState('');
 
   const handleAddNote = () => {
-    console.log(newNote);
+    setNotes([...notes, { id: notes.length + 1, content: newNote, icon: 'code' }]);
   };
   return (
     <View style={styles.container}>
