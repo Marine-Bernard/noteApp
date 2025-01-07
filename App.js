@@ -14,6 +14,10 @@ export default function App() {
     { id: '3', content: 'Note3', icon: 'favorite' },
     { id: '4', content: 'Note4', icon: 'code' },
   ]);
+
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
+  };
   
   return (
     <View style={styles.container}>
@@ -23,7 +27,7 @@ export default function App() {
         data={notes} 
         keyExtractor={(item) => item.id} 
         renderItem={({ item }) => (
-          <NoteItem item={item} />
+          <NoteItem item={item} fonction={deleteNote} />
         )}
       />
       <AddNote notes={notes} setNotes={setNotes} />
