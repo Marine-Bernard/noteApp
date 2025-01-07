@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/header';
+import NoteItem from './components/NoteItem';
 import { FlatList } from 'react-native-web';
 import { useState } from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
+
 
 export default function App() {
   const [notes, setNotes] = useState([
@@ -21,10 +22,7 @@ export default function App() {
         data={notes} 
         keyExtractor={(item) => item.id} 
         renderItem={({ item }) => (
-          <View style={styles.note}>
-            <MaterialIcons name={item.icon} size={24} color="#00796b" style={styles.icon} />
-            <Text style={styles.noteText}>{item.content}</Text>
-          </View>
+          <NoteItem item={item} />
         )}
       />
       <StatusBar style="auto" />
@@ -33,16 +31,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  note: {
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    marginVertical: 10,
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
