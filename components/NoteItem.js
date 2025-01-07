@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const NoteItem = ({ item }) => {
-    console.log(item);
   return (
     <View style={styles.note}>
       <MaterialIcons name={item.icon} size={24} color="#00796b" style={styles.icon} />

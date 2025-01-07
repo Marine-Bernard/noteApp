@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/header';
 import NoteItem from './components/NoteItem';
-import { FlatList } from 'react-native-web';
+import { FlatList, TextInput } from 'react-native-web';
 import { useState } from 'react';
 
 
@@ -13,7 +13,11 @@ export default function App() {
     { id: '3', content: 'Note3', icon: 'favorite' },
     { id: '4', content: 'Note4', icon: 'code' },
   ]);
+  const [newNote, setNewNote] = useState('');
 
+  const handleAddNote = () => {
+    console.log(newNote);
+  };
   return (
     <View style={styles.container}>
       <Header title="NotesApp" />
@@ -25,12 +29,28 @@ export default function App() {
           <NoteItem item={item} />
         )}
       />
+      <div style={styles.AddNote}>
+        <TextInput placeholder="Add a note" value={newNote} onChangeText={setNewNote} />
+        <button onClick={handleAddNote}>Add</button>
+      </div>
+      
       <StatusBar style="auto" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  AddNote: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    width: '100%',
+    backgroundColor: '#f9f9f9',
+    position: 'absolute',
+    bottom: 0,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
